@@ -1,0 +1,118 @@
+{
+  "mcp_version": "0.1.0",
+  "name": "Shopify Connector",
+  "description": "Connects to the Shopify Admin API to manage shop data.",
+  "authentication": {
+    "type": "api_key",
+    "name": "shopify_auth",
+    "fields": [
+      {
+        "name": "store_url",
+        "label": "Shopify Store URL",
+        "description": "The full URL of your Shopify store (e.g., https://my-store.myshopify.com)."
+      },
+      {
+        "name": "access_token",
+        "label": "Shopify Admin API Access Token",
+        "description": "Your Shopify Admin API access token."
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "getShopDetails",
+      "description": "Retrieves details about the Shopify store.",
+      "arguments": []
+    },
+    {
+      "name": "getProducts",
+      "description": "Retrieves a paginated list of products.",
+      "arguments": [
+        {
+          "name": "limit",
+          "description": "The number of products to return (default: 10, max: 250).",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "page_info",
+          "description": "The page info for the next page of results.",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "getProduct",
+      "description": "Retrieves a single product by its ID.",
+      "arguments": [
+        {
+          "name": "id",
+          "description": "The ID of the product to retrieve.",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "getOrders",
+      "description": "Retrieves a paginated list of orders.",
+      "arguments": [
+        {
+          "name": "limit",
+          "description": "The number of orders to return (default: 10, max: 250).",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "page_info",
+          "description": "The page info for the next page of results.",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "getOrder",
+      "description": "Retrieves a single order by its ID.",
+      "arguments": [
+        {
+          "name": "id",
+          "description": "The ID of the order to retrieve.",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "get",
+      "description": "Makes a generic GET request to the Shopify Admin API.",
+      "arguments": [
+        {
+          "name": "path",
+          "description": "The API path to request (e.g., /admin/api/2023-10/shop.json).",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "graphql",
+      "description": "Makes a generic GraphQL request to the Shopify Admin API.",
+      "arguments": [
+        {
+          "name": "query",
+          "description": "The GraphQL query to execute.",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "variables",
+          "description": "The variables for the GraphQL query.",
+          "type": "object",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
